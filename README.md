@@ -1,0 +1,1 @@
+# NodeBB Email Restrictor

@@ -1,0 +1,17 @@
+{
+	"id": "nodebb-plugin-emailrestrictor",
+	"name": "Email Restrictor",
+	"description": "Forbid emails on registration",
+	"url": "https://github.com/segura2010/nodebb-plugin-emailrestrictor",
+	"library": "./library.js",
+
+	"hooks": [
+    {
+      "hook": "static:app.load", "method": "init"
+    },
+		{ "hook": "filter:admin.header.build", "method": "addNavigation", "callbacked": true },
+		{ "hook": "filter:register.check", "method": "getAuth", "callbacked": true }
+	],
+  "templates": "./templates",
+  "minver": "0.7.0"
+}
