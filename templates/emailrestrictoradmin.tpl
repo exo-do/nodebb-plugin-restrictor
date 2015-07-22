@@ -13,14 +13,6 @@
 </div>
 
 <script>
-    // H
-    socket.emit('admin.getEmailRestrictions', {}, function(err, data){
-        console.log(data);
-        if(!err)
-        {
-            $("#emailRestrictions").val(data.data);
-        }
-    });
 
     function setEmailRestrictions()
     {
@@ -37,4 +29,13 @@
             }
         });
     }
+
+    socket.emit('admin.getEmailRestrictions', {}, function(err, data){
+        // console.log(data);
+        if(!err && data)
+        {
+            $("#emailRestrictions").val(data.data);
+        }
+    });
+
 </script>
