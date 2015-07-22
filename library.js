@@ -26,7 +26,8 @@ var emailrestrictor = {};
   emailrestrictor.getAuth = function(data, callback)
   {
     //console.log('Data: ');
-    //console.log(data);
+    // console.log(data.res.socket._peername.address);
+    //console.log(data.res.req.ip);
 
       
       db.getObject('emailrestrictor', function(err, res){
@@ -40,7 +41,20 @@ var emailrestrictor = {};
             return callback("ERROR: Email invelido", data);
           }
         }
-        return callback(null, data);
+        db.getObject('emailiprestrictor', function(err, ips){
+          var restrictions = ips.data ? ips.data.split(" ") : [];
+          var ip = data.res.req.ip; //data.res.socket._peername.address;
+
+          for(var i=0;i<restrictions.length;i++)
+          {
+            if(ip == restrictions[i])
+            {
+              console.log("Intento de registro desde ip bloqueada "+ip);
+              return callback("ERROR: IP invalida", data);
+            }
+          }
+          return callback(null, data);
+        });
       });
   }
 
@@ -68,6 +82,22 @@ var emailrestrictor = {};
     //console.log(data);
     // Deteccion de multicuenta por cookie, me viene por sockets
     db.setObject('emailrestrictor', data, function(err, d){
+      //console.log(err);
+      callback(err, d);
+    });
+  };
+
+  SocketAdmins.getIPRestrictions = function (socket, data, callback) {
+    //console.log('received socket');
+    // Recivimos la peticion para mostrar las detecciones (al hacer por sockets de admin, solo se responden
+    // las peticiones de admins!)
+    db.getObject('emailiprestrictor', callback);
+  };
+
+  SocketAdmins.setIPRestrictions = function (socket, data, callback) {
+    //console.log(data);
+    // Deteccion de multicuenta por cookie, me viene por sockets
+    db.setObject('emailiprestrictor', data, function(err, d){
       //console.log(err);
       callback(err, d);
     });
