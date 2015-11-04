@@ -19,7 +19,7 @@
   },
   "bugs": {
     "url": "https://github.com/segura2010/nodebb-plugin-emailrestrictor/issues"
-  }
+  },
    "nbbpm": {
      "compatibility": "^0.8.0"
   }
