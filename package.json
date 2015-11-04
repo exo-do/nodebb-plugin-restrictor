@@ -1,6 +1,6 @@
 {
   "name": "nodebb-plugin-restrictor",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "Forbid emails and ip on registration",
   "main": "library.js",
   "repository": {
