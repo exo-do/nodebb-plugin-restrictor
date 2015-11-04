@@ -1,8 +1,8 @@
 {
-	"id": "nodebb-plugin-emailrestrictor",
-	"name": "Email Restrictor",
-	"description": "Forbid emails on registration",
-	"url": "https://github.com/segura2010/nodebb-plugin-emailrestrictor",
+	"id": "nodebb-plugin-restrictor",
+	"name": "Nodebb Restrictor",
+	"description": "Forbid emails and ips on registration",
+	"url": "https://github.com/exo-do/nodebb-plugin-restrictor",
 	"library": "./library.js",
 
 	"hooks": [
