@@ -1,6 +1,6 @@
 
 (function(MultiAccount) {
-	// Funcion para deteccion de multicuenta por cookie
+	// Fuction to detect multiaccounts by using cookies
 	init = function()
 	{
 		$(window).on('action:ajaxify.contentLoaded', function () {
