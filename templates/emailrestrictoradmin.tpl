@@ -5,19 +5,19 @@
 </div>
 
 <div class="row" style="padding:10px">
-    <label class="control-label" for="emailRestrictions"><h5>Indica las palabras o dominios a prohibir separados por espacios</h5>
+    <label class="control-label" for="emailRestrictions"><h5>Indicate the words or domains to be forbidden separated by spaces</h5>
     </label>
     <br>
     <input class="col-xs-12" type="text" id="emailRestrictions" placeholder="Ej: gmail.com hotmail.com temporal">  
-    <button onclick="setEmailRestrictions()">Guardar</button>
+    <button onclick="setEmailRestrictions()">Save</button>
 
     <br><br>
 
-    <label class="control-label" for="IPRestrictions"><h5>Indica las IP separadas por espacios</h5>
+    <label class="control-label" for="IPRestrictions"><h5>Indicate the IP sparated by spaces</h5>
     </label>
     <br>
     <input class="col-xs-12" type="text" id="IPRestrictions" placeholder="Ej: 127.0.0.1 localhost">  
-    <button onclick="setIPRestrictions()">Guardar</button>
+    <button onclick="setIPRestrictions()">Save</button>
 </div>
 
 <script>
