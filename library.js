@@ -17,7 +17,7 @@ var emailrestrictor = {};
       // Renderiza la plantilla
       res.render('emailrestrictoradmin', {});
     };
-    //Creamos las direcciones para poder ver los registros
+    //Creating paths to be able to see the logs
     params.router.get('/admin/emailrestrictor', middleware.buildHeader, controllers.getEmailRestrictor);
     params.router.get('/api/admin/emailrestrictor', controllers.getEmailRestrictor);
     callback();
@@ -59,7 +59,7 @@ var emailrestrictor = {};
   }
 
   emailrestrictor.addNavigation = function(custom_header, callback) {
-    // Añadimos al menu de admin el acceso a ver los registros
+    // Adding access to see the register to the admin’s menu
     custom_header.plugins.push({
       route: '/emailrestrictor',
       icon: '',
@@ -70,17 +70,17 @@ var emailrestrictor = {};
   }
 
 
-  // LLamadas por sockets
+  // Calls by sockets
   SocketAdmins.getEmailRestrictions = function (socket, data, callback) {
     //console.log('received socket');
-    // Recivimos la peticion para mostrar las detecciones (al hacer por sockets de admin, solo se responden
-    // las peticiones de admins!)
+    // We receive the petition to show the things detected (as it has been made by admin’s sockets, it only answer
+    // the petitions of admins!
     db.getObject('emailrestrictor', callback);
   };
 
   SocketAdmins.setEmailRestrictions = function (socket, data, callback) {
     //console.log(data);
-    // Deteccion de multicuenta por cookie, me viene por sockets
+    // Detecting multiaccount by cookie, it comes by sockets
     db.setObject('emailrestrictor', data, function(err, d){
       //console.log(err);
       callback(err, d);
@@ -89,14 +89,13 @@ var emailrestrictor = {};
 
   SocketAdmins.getIPRestrictions = function (socket, data, callback) {
     //console.log('received socket');
-    // Recivimos la peticion para mostrar las detecciones (al hacer por sockets de admin, solo se responden
-    // las peticiones de admins!)
+    // Reciving the petition to show the detections (as we used admin’s sockets, only will be answered admin’s petitions!)
     db.getObject('emailiprestrictor', callback);
   };
 
   SocketAdmins.setIPRestrictions = function (socket, data, callback) {
     //console.log(data);
-    // Deteccion de multicuenta por cookie, me viene por sockets
+    // Detecting multiaccount by cookie, it comes by sockets
     db.setObject('emailiprestrictor', data, function(err, d){
       //console.log(err);
       callback(err, d);
